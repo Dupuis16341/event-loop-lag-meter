@@ -40,3 +40,10 @@ The main trade-off is accuracy versus simplicity. It measures lag only at timer 
 If the process is suspended for longer than one interval — laptop sleep, a debugger pause, or a very long synchronous task — the meter skips ahead to the next interval boundary after the current time. It reports the initial large lag for the missed tick, then resumes measuring fresh lag rather than reporting one accumulated delay forever.
 
 The timer is unref'ed when possible so it does not keep the Node process alive on its own.
+
+## Design notes
+
+The window stores values eagerly rather than keeping running aggregates. Running
+sums drift with floating point over long streams, and recomputing from a small
+buffer is cheap enough that the drift is not worth the speed.
+
