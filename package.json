@@ -1,6 +1,6 @@
 {
   "name": "event-loop-lag-meter",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Schedules a timer at a fixed interval and measures the difference between the scheduled and actual callback time to report event loop delay.",
   "type": "module",
   "main": "src/index.js",
